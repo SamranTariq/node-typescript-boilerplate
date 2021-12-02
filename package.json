@@ -1,29 +1,53 @@
 {
-  "name": "server",
+  "name": "boilerplate-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "BoilerPlate node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon src/app.ts"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamranTariq/node-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "boilerplay",
+    "cron",
+    "jobs",
+    "js",
+    "javascript",
+    "typescript",
+    "node",
+    "express"
+  ],
+  "author": "Samran Tariq",
   "license": "ISC",
   "devDependencies": {
-    "@types/config": "0.0.40",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.11",
     "@types/pino": "^7.0.5",
+    "@types/uuid": "^8.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "config": "^3.3.6",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.14",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "pino": "^7.5.0",
-    "pino-pretty": "^7.2.0"
+    "pino": "^7.5.1",
+    "pino-pretty": "^7.2.0",
+    "uuid": "^8.3.2"
   }
 }

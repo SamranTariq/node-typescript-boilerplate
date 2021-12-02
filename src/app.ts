@@ -1,23 +1,32 @@
+import { createServer } from 'http';
+import { server_secrets } from './config';
+import { ServerSecrets } from './loaders/interfaces';
+
+import { logger } from './utils/logger';
+import { version } from '../package.json';
+
 const express = require('express');
-const { createServer } = require('http');
-const cors = require('cors');
-const config = require('config');
+const loaders = require('./loaders');
 
-const { logger } = require('./utils/logger');
-const { version } = require('../package.json');
+async function startServer() {
+  const app = express();
 
-const corsOrigin: string = config.get('corsOrigin');
-const port: number = config.get('port');
-const host: string = config.get('host');
+  // ! ➡️ Create Server
+  const httpServer = createServer(app);
 
-const app = express();
-const httpServer = createServer(app);
+  // ! Start Express
+  await loaders({ expressApp: app });
 
-app.get('/', (_: any, res: any) =>
-  res.send(`server is up on version ${version}`)
-);
+  // ! ➡️ Server Secrets Object literal
+  const config: ServerSecrets = server_secrets;
 
-httpServer.listen(port, host, () => {
-  logger.info(`🚀 Server version ${version} is running 🛼`);
-  logger.info(`http://${host}:${port}`);
-});
+  // ! ➡️ Start Server
+  httpServer.listen(config.port, () => {
+    logger.info(`🚀 Server version ${version} is running 🛼`);
+    logger.info(
+      `📶 http://${config.host}:${config.port} againt corsOrigin ${config.corsOrigin}`
+    );
+  });
+}
+
+startServer();
