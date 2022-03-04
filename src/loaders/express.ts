@@ -10,6 +10,7 @@ import { assignMorganToken } from './middlewares';
 export default async ({ app }: { app: express.Application }) => {
   app.use(cors()); // ! ➡️ Enable Cors
   app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
 
   // ! ➡️ Set Morgan Options
 
